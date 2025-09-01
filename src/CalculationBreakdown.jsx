@@ -15,10 +15,10 @@ const CalculationBreakdown = ({ principal, interestRate, years }) => {
         (Math.pow(1 + monthlyRate, months) - 1);
 
     return (
-        <div className="text-center mt-6">
+        <div className="calculator__breakdown">
             <button
                 onClick={() => setModalIsOpen(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                className="calculator__breakdown__button"
             >
                 Show Calculation Details
             </button>
@@ -26,34 +26,38 @@ const CalculationBreakdown = ({ principal, interestRate, years }) => {
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={() => setModalIsOpen(false)}
-                className="calculation-modal"
-                overlayClassName="calculation-overlay"
+                className="calculator__modal"
+                overlayClassName="calculator__modal-overlay"
             >
-                <div className="calculation-modal-content">
-                    <h2>How Your Payment is Calculated</h2>
+                <div className="calculator__modal-content">
+                    <h2 className="calculator__modal-title">How Your Payment is Calculated</h2>
 
-                    <p><strong>Inputs:</strong></p>
-                    <ul>
+                    <p className="calculator__modal-strong">Inputs:</p>
+                    <ul className="calculator__modal-list">
                         <li>Principal: €{principal.toLocaleString()}</li>
                         <li>Interest Rate: {interestRate}% per year</li>
                         <li>Term: {years} years ({months} months)</li>
                     </ul>
 
-                    <p><strong>The formula for monthly payments is:</strong></p>
-                    <pre>
+                    <p className="calculator__modal-strong">The formula for monthly payments is:</p>
+                    <pre className="calculator__modal-pre">
                         M = P × (r × (1 + r)^n) / ((1 + r)^n - 1)
                     </pre>
 
-                    <ul>
+                    <ul className="calculator__modal-list">
                         <li>Monthly interest rate (r): {(monthlyRate * 100).toFixed(4)}%</li>
                         <li>Total months (n): {months}</li>
                         <li>Monthly payment (M): €{monthlyPayment.toFixed(2)}</li>
                     </ul>
 
-                    <button onClick={() => setModalIsOpen(false)}>Close</button>
+                    <button
+                        onClick={() => setModalIsOpen(false)}
+                        className="calculator__modal__button"
+                    >
+                        Close
+                    </button>
                 </div>
             </Modal>
-
         </div>
     );
 };

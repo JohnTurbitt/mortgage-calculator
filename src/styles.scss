@@ -1,235 +1,307 @@
+// =======================================
+// VARIABLES
+// =======================================
+$primary-green: #009247; // headers, buttons
+$primary-green-hover: #00b159; // button hover
+$secondary-lime: #32cd32; // positive results, savings
+$secondary-orange: #ff883e; // negative actions, modal close
+$text-dark: #2f4f2f; // general text
+$text-muted: #6b8e23; // secondary text
+$background-light: #fefef7; // page background
+$background-white: #ffffff;
+$strong-gold: #FFD700; // Gold for emphasis      // cards, modals
+$box-shadow: rgba(0, 0, 0, 0.1);
+$box-shadow-modal: rgba(0, 0, 0, 0.2);
+$overlay-dark-green: rgba(0, 50, 20, 0.7);
+
+// =======================================
+// GLOBAL
+// =======================================
 body {
   font-family: Arial, sans-serif;
-  background: #f8fafc;
+  background: $background-light;
   margin: 0;
   padding: 0;
 }
 
-.calculator-container {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
+// =======================================
+// CALCULATOR BLOCK
+// =======================================
+.calculator {
+  &__container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: $background-white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px $box-shadow;
+  }
 
-h2 {
-  text-align: center;
-  color: #1e3a8a;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-}
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
 
-.form-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-}
+    &-title {
+      font-size: 2rem;
+      color: $primary-green;
+      margin-bottom: 0.5rem;
+    }
 
-input {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border 0.2s;
-}
+    &-description {
+      font-size: 1rem;
+      color: $text-muted;
+    }
+  }
 
-input:focus {
-  outline: none;
-  border-color: #1e3a8a;
-  box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
-}
+  &__form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
 
-button {
-  grid-column: span 2;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: #1e3a8a;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
+    &-group {
+      display: flex;
+      flex-direction: column;
 
-button:hover {
-  background: #1d4ed8;
-  transform: translateY(-2px);
-}
+      &__label {
+        margin-bottom: 0.25rem;
+        font-weight: bold;
+        color: $text-dark;
+      }
 
-.results {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: #299732;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
+      &__input {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        transition: border 0.2s;
 
-.results p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
+        &:focus {
+          outline: none;
+          border-color: $primary-green;
+          box-shadow: 0 0 4px rgba(0, 146, 71, 0.3);
+        }
+      }
+    }
 
-.charts {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
+    &__button {
+      grid-column: span 2;
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: $primary-green;
+      color: $background-white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
 
-.charts > div:first-child {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
+      &:hover {
+        background: $primary-green-hover;
+        transform: translateY(-2px);
+      }
+    }
+  }
 
-.charts > div:last-child {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem;
-  height: 320px;
-  box-sizing: border-box;
-}
+  &__results {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: $strong-gold;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    color: $text-dark;
 
-.pie-chart-box {
-  text-align: center;
-  margin-bottom: 1.5rem;
+    &-item {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+  }
 
-  h3 {
-    margin-bottom: 0.5rem;
-    color: #2563eb;
+  &__charts {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &-pie-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    &-line-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem;
+      height: 320px;
+      box-sizing: border-box;
+    }
+
+    &-pie-box {
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+      &__title {
+        margin-bottom: 0.5rem;
+        color: $primary-green;
+      }
+    }
+  }
+
+  &__modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: $overlay-dark-green;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__modal {
+    position: relative;
+    color: $primary-green;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90%;
+    background: $background-white;
+    border-radius: 12px;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 8px 30px $box-shadow-modal;
+    animation: fadeIn 0.3s ease;
+
+    &-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    &-strong {
+      color: $text-dark;
+      font-weight: bold;
+    }
+
+    &-list {
+      color: $primary-green; // text color stays green
+      list-style: disc; // standard bullet
+      padding-left: 1.5rem;
+
+      li {
+        position: relative;
+        margin-bottom: 0.5rem;
+
+        &::marker {
+          color: #FFD700; // gold bullets
+        }
+      }
+    }
+
+    &-pre {
+      background: #f1f5f9;
+      padding: 1rem;
+      color: #000;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+
+    &__button {
+      margin-top: 2rem;
+      background: $secondary-orange;
+      color: $background-white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background 0.2s;
+    }
   }
 }
 
+// =======================================
+// MEDIA QUERIES
+// =======================================
 @media screen and (max-width: 768px) {
-  .form-grid {
+  .calculator__form {
     grid-template-columns: auto;
   }
 
-  .charts > div:first-child {
+  .calculator__charts-pie-container {
     flex-direction: column;
     align-items: center;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .calculator-container {
+  .calculator__container {
     padding: 1rem;
   }
 
-  h2 {
+  .calculator__header-title {
     font-size: 1.5rem;
   }
 
-  input, button {
+  .calculator__form__input,
+  .calculator__form__button {
     font-size: 0.95rem;
     padding: 0.65rem;
   }
 }
 
-.calculator-header {
-  text-align: center;
-  margin-bottom: 2rem;
-
-  h1 {
-    font-size: 2rem;
-    color: #1e3a8a;
-    margin-bottom: 0.5rem;
+.extras {
+  &__cookie-consent {
+    background: #2B373B;
+    font-size: 0.9rem;
   }
 
-  p {
-    font-size: 1rem;
-    color: #4b5563;
+  &__cookie-consent-button {
+    color: #fff;
+    background: $primary-green;
+    font-size: 13px;
+    border-radius: 6px;
+    padding: 6px 12px;
+  }
+
+  &__ad-banner {
+    text-align: center;
+    margin: 2rem 0;
+
+    &--main {
+      max-width: 728px;
+      height: 90px;
+      margin: 0 auto;
+    }
+  }
+
+  &__coffee {
+    text-align: center;
+    margin-top: 2rem;
+
+    &-image {
+      height: 60px;
+    }
   }
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-group label {
-  margin-bottom: 0.25rem;
-  font-weight: bold;
-  color: #374151;
-}
-
-.calculation-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.calculation-modal {
-  position: relative;
-  color: #1e3a8a;
-  width: 90%;
-  max-width: 800px;
-  max-height: 90%;
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  overflow-y: auto;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease;
-}
-
-.calculation-modal h2 {
-  text-align: center;
-  color: #1e3a8a;
-  margin-bottom: 1rem;
-}
-
-.calculation-modal strong {
-  color: #1e3a8a;
-  font-weight: bold;
-}
-
-.calculation-modal ul {
-  color: #1e3a8a;
-}
-
-
-.calculation-modal pre {
-  background: #f1f5f9;
-  padding: 1rem;
-  color: #000;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  overflow-x: auto;
-}
-
-.calculation-modal button {
-  margin-top: 2rem;
-  background: #dc2626;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.calculation-modal button:hover {
-  background: #b91c1c;
-}
-
+// =======================================
+// ANIMATIONS
+// =======================================
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

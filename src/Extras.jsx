@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import CookieConsent from "react-cookie-consent";
 
-// AdSense Banner Component
-const AdBanner = ({ adSlot, style = {} }) => {
+const AdBanner = ({ adSlot, className = "" }) => {
   const adRef = useRef(null);
 
   useEffect(() => {
@@ -14,12 +13,12 @@ const AdBanner = ({ adSlot, style = {} }) => {
   }, []);
 
   return (
-    <div style={{ textAlign: "center", margin: "2rem 0" }}>
+    <div className={`extras__ad-banner ${className}`}>
       <ins
         className="adsbygoogle"
-        style={{ display: "block", ...style }}
-        data-ad-client="ca-pub-5228307980468300" // Your AdSense Publisher ID
-        data-ad-slot={adSlot} // Replace with your ad slot ID
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-5228307980468300"
+        data-ad-slot={adSlot}
         data-ad-format="auto"
         data-full-width-responsive="true"
         ref={adRef}
@@ -30,31 +29,28 @@ const AdBanner = ({ adSlot, style = {} }) => {
 
 const Extras = () => {
   return (
-    <>
+    <div className="extras">
+      {/* Cookie Consent */}
       <CookieConsent
         location="bottom"
         buttonText="Accept"
         cookieName="siteCookiesAccepted"
-        style={{ background: "#2B373B" }}
-        buttonStyle={{
-          color: "#fff",
-          background: "#1e3a8a",
-          fontSize: "13px",
-          borderRadius: "6px",
-          padding: "6px 12px",
-        }}
+        className="extras__cookie-consent"
+        buttonClassName="extras__cookie-consent-button"
         expires={150}
       >
         We use cookies for analytics and ads. By using this site, you agree to
         our cookie policy.
       </CookieConsent>
 
+      {/* Ad Banner */}
       <AdBanner
-        adSlot="1234567890" // Replace with your actual AdSense ad slot ID
-        style={{ width: "100%", maxWidth: "728px", height: "90px" }}
+        adSlot="1234567890" // Replace with actual AdSense ad slot ID
+        className="extras__ad-banner--main"
       />
 
-      <div style={{ textAlign: "center", marginTop: "2rem" }}>
+      {/* Buy Me a Coffee */}
+      <div className="extras__coffee">
         <a
           href="https://www.buymeacoffee.com/johnturbitt"
           target="_blank"
@@ -63,11 +59,11 @@ const Extras = () => {
           <img
             src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png"
             alt="Buy Me A Coffee"
-            style={{ height: "60px" }}
+            className="extras__coffee-image"
           />
         </a>
       </div>
-    </>
+    </div>
   );
 };
 
