@@ -160,3 +160,76 @@ button:hover {
   font-weight: bold;
   color: #374151;
 }
+
+.calculation-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculation-modal {
+  position: relative;
+  color: #1e3a8a;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  overflow-y: auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.calculation-modal h2 {
+  text-align: center;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+.calculation-modal strong {
+  color: #1e3a8a;
+  font-weight: bold;
+}
+
+.calculation-modal ul {
+  color: #1e3a8a;
+}
+
+
+.calculation-modal pre {
+  background: #f1f5f9;
+  padding: 1rem;
+  color: #000;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+.calculation-modal button {
+  margin-top: 2rem;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calculation-modal button:hover {
+  background: #b91c1c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

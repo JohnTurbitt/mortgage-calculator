@@ -1,34 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import CookieConsent from "react-cookie-consent";
 
-// Placeholder ad component (replace with AdSense or affiliate code)
-const AdBanner = () => {
+// AdSense Banner Component
+const AdBanner = ({ adSlot, style = {} }) => {
+  const adRef = useRef(null);
+
   useEffect(() => {
-    // Example for dynamically loading AdSense (optional)
-    if (window.adsbygoogle) {
-      window.adsbygoogle.push({});
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error("AdSense error:", e);
     }
   }, []);
 
   return (
-    <div style={{ width: "100%", textAlign: "center", margin: "2rem 0" }}>
-      {/* Replace below div with actual ad code */}
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "728px",
-          height: "90px",
-          background: "#e5e7eb",
-          display: "inline-flex",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: "8px",
-          color: "#374151",
-          fontWeight: "bold",
-        }}
-      >
-        AD PLACEHOLDER
-      </div>
+    <div style={{ textAlign: "center", margin: "2rem 0" }}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block", ...style }}
+        data-ad-client="ca-pub-5228307980468300" // Your AdSense Publisher ID
+        data-ad-slot={adSlot} // Replace with your ad slot ID
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+        ref={adRef}
+      />
     </div>
   );
 };
@@ -54,13 +49,14 @@ const Extras = () => {
         our cookie policy.
       </CookieConsent>
 
-      {/* Ad Banner */}
-      <AdBanner />
+      <AdBanner
+        adSlot="1234567890" // Replace with your actual AdSense ad slot ID
+        style={{ width: "100%", maxWidth: "728px", height: "90px" }}
+      />
 
-      {/* Buy Me a Coffee Button */}
       <div style={{ textAlign: "center", marginTop: "2rem" }}>
         <a
-          href="https://www.buymeacoffee.com/yourusername"
+          href="https://www.buymeacoffee.com/johnturbitt"
           target="_blank"
           rel="noopener noreferrer"
         >
