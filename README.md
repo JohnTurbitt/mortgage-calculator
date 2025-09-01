@@ -1,6 +1,6 @@
 # Irish Mortgage & Financial Calculator ⚡
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![SCSS](https://img.shields.io/badge/SCSS-CC6699?logo=sass&logoColor=white)](https://sass-lang.com/) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![SCSS](https://img.shields.io/badge/SCSS-CC6699?logo=sass&logoColor=white)](https://sass-lang.com/) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![View Only](https://img.shields.io/badge/License-View%20Only-red.svg)](./LICENSE)
 
 > ⚠️ **View Only**  
 > This project is for **demonstration purposes only**. You may view the code and live demo, but **copying, modifying, or redistributing the code is not permitted**.
@@ -13,13 +13,9 @@ A **standalone app** to calculate mortgages, savings, and visualize financial re
 
 - [Features](#features)  
 - [Getting Started](#getting-started)  
-- [Tech Stack](#tech-stack)  
-- [Screenshots](#screenshots)  
-- [Live Demo](#live-demo)  
+- [Tech Stack](#tech-stack)   
 - [How to Use](#how-to-use)  
 - [License](#license)  
-
----
 
 ## Features
 
@@ -64,20 +60,6 @@ Results appear in the green results box and in interactive charts below.
 
 For more detailed information, open the modal overlay.
 
+## License
 
-## Licence
-
-Copyright © 2025 John Turbitt
-
-All rights reserved.
-
-This repository and its contents are for **viewing purposes only**. You may view and reference the code, but you may **not**:
-
-- Copy or reproduce the code
-- Modify or create derivative works
-- Redistribute the code in any form
-- Use the code in any other project or product
-
-You are welcome to view and interact with the project on GitHub or via the live demo, but the above restrictions apply.
-
-For inquiries or permission requests, please contact John Turbitt.
+This project is view-only. See the [LICENSE](./LICENCE.md) file for details.
