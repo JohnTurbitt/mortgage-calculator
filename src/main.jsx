@@ -6,7 +6,9 @@ import Extras from './Extras'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <MortgageCalculator />
-    <Extras />
+    <div className="calculator-page">
+      <MortgageCalculator />
+      <Extras />
+    </div>
   </StrictMode>,
 )
