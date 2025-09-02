@@ -27,7 +27,6 @@ const AdBanner = ({ adSlot, className = "" }) => {
         data-ad-format="auto"
         data-full-width-responsive="true"
         ref={adRef}
-        data-adtest="on"
       />
     </div>
   );
