@@ -4,9 +4,14 @@ import CookieConsent from "react-cookie-consent";
 const AdBanner = ({ adSlot, className = "" }) => {
   const adRef = useRef(null);
 
-  useEffect(() => {
+   useEffect(() => {
     try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      if (window.adsbygoogle && adRef.current) {
+        // Only push if the <ins> hasn’t been used already
+        if (!adRef.current.hasAttribute("data-adsbygoogle-status")) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      }
     } catch (e) {
       console.error("AdSense error:", e);
     }
@@ -22,6 +27,7 @@ const AdBanner = ({ adSlot, className = "" }) => {
         data-ad-format="auto"
         data-full-width-responsive="true"
         ref={adRef}
+        data-adtest="on"
       />
     </div>
   );
@@ -45,7 +51,7 @@ const Extras = () => {
 
       {/* Ad Banner */}
       <AdBanner
-        adSlot="1234567890" // Replace with actual AdSense ad slot ID
+        adSlot="8556747793" // Replace with actual AdSense ad slot ID
         className="extras__ad-banner--main"
       />
 
